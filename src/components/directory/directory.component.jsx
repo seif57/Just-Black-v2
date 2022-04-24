@@ -1,5 +1,5 @@
 import { Grid } from "@nextui-org/react";
-import CategoryItem from "../category-item/category-item";
+import CategoryItem from "../category-item/category-item.component";
 export const Directory = ({ categories }) => {
   return (
     <Grid.Container
@@ -14,7 +14,10 @@ export const Directory = ({ categories }) => {
       {categories.map((category) => (
         <Grid
           key={category.id}
-          xs={category.size}
+          xs={category.xs}
+          md={category.md}
+          lg={category.lg}
+          xl={category.xl}
           justify="center"
           alignItems="center"
         >

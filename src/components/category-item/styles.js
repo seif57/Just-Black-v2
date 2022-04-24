@@ -6,11 +6,12 @@ export const MyStyledButton = styled(Button, {
   zIndex: "1",
   opacity: "0.5",
   boxShadow: "$md", // shadows.md
+  fontFamily: "ui-rounded",
   variants: {
     size: {
       mysize: {
-        height: "150px",
-        width: "250px",
+        height: "$28",
+        width: "$32",
         borderRadius: "$lg",
       },
     },
