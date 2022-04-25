@@ -4,23 +4,22 @@ export const Directory = ({ categories }) => {
   return (
     <Grid.Container
       css={{
-        width: "80%",
-        margin: "0 auto",
+        width: "90%",
+        margin: "auto",
       }}
       justify="space-between"
       gap={2}
-      alignItems="center"
-    >
+      alignItems="center">
       {categories.map((category) => (
         <Grid
           key={category.id}
           xs={category.xs}
+          sm={category.sm}
           md={category.md}
           lg={category.lg}
           xl={category.xl}
           justify="center"
-          alignItems="center"
-        >
+          alignItems="center">
           <CategoryItem {...category} />
         </Grid>
       ))}

@@ -18,6 +18,7 @@ const CategoryItem = ({ title, imageUrl }) => {
           </MyStyledButton>
         </Row>
         <Card.Image
+          showSkeleton
           src={imageUrl}
           height={340}
           width="100%"
