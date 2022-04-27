@@ -9,7 +9,10 @@ const categories = [
     md: 4,
     lg: 4,
     xl: 4,
-    imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+    imageUrl: {
+      src: "https://i.ibb.co/cvpntL1/hats.png",
+      alt: "hats",
+    },
   },
   {
     id: 2,
@@ -19,7 +22,10 @@ const categories = [
     md: 4,
     lg: 4,
     xl: 4,
-    imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+    imageUrl: {
+      src: "https://i.ibb.co/px2tCc3/jackets.png",
+      alt: "jackets",
+    },
   },
   {
     id: 3,
@@ -29,7 +35,10 @@ const categories = [
     lg: 4,
     xl: 4,
     title: "sneakers",
-    imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+    imageUrl: {
+      src: "https://i.ibb.co/0jqHpnp/sneakers.png",
+      alt: "sneakers",
+    },
   },
   {
     id: 4,
@@ -38,7 +47,10 @@ const categories = [
     lg: 6,
     xl: 6,
     title: "womens",
-    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+    imageUrl: {
+      src: "https://i.ibb.co/GCCdy8t/womens.png",
+      alt: "womens",
+    },
   },
   {
     id: 5,
@@ -47,15 +59,14 @@ const categories = [
     lg: 6,
     xl: 6,
     title: "mens",
-    imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+    image: {
+      src: "https://i.ibb.co/R70vBrQ/men.png",
+      alt: "men",
+    },
   },
 ];
 const Home = () => {
-  return (
-    <>
-      <Directory categories={categories} />
-    </>
-  );
+  return <Directory categories={categories} />;
 };
 
 export default Home;
