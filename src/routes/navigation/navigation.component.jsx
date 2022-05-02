@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
-import { User } from "@nextui-org/react";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -11,7 +10,9 @@ import {
   NavigationLinksContainer,
   NavigationLink,
   MenuContainer,
+  UserStyled,
 } from "./styles";
+import Auth from "../../routes/authentication/auth.component";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -36,8 +37,9 @@ const Navigation = () => {
         </MenuContainer>
         <NavigationLinksContainer isOpen={isOpen}>
           <NavigationLink to="/shop">Shop</NavigationLink>
-          <NavigationLink to="/sign-in">Sign In</NavigationLink>
-          <User
+          {/* <NavigationLink to="/sign-in">Sign In</NavigationLink> */}
+          <Auth />
+          <UserStyled
             bordered
             color="gradient"
             src="https://i.pravatar.cc/150?u=a042581f4e29026704d"

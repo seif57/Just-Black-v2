@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Col, Row, Text } from "@nextui-org/react";
 import { MyStyledButton } from "./styles";
-const CategoryItem = ({ title, image }) => {
+const CategoryItem = ({ title, imageUrl }) => {
   return (
     <Card hoverable cover>
       <Card.Body>
@@ -19,10 +19,10 @@ const CategoryItem = ({ title, image }) => {
         </Row>
         <Card.Image
           showSkeleton
-          src={image.src}
+          src={imageUrl?.src}
           height={340}
           width="100%"
-          alt={image.alt}
+          alt={imageUrl?.alt}
         />
       </Card.Body>
     </Card>

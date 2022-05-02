@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { User } from "@nextui-org/react";
 
 export const NavigationContainer = styled.div`
   padding: 0 2rem;
@@ -9,10 +10,13 @@ export const NavigationContainer = styled.div`
   flex-wrap: wrap;
   background: white;
   position: sticky;
-  z-index: 1;
+  z-index: 1000;
   top: 0;
   left: 0;
   right: 0;
+  @media (max-width: 768px) {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
 `;
 
 export const LogoContainer = styled(Link)`
@@ -32,7 +36,7 @@ export const NavigationLinksContainer = styled.div`
   @media (max-width: 768px) {
     overflow: hidden;
     flex-direction: column;
-    max-height: ${({ isOpen }) => (isOpen ? "300px" : "0")};
+    max-height: ${({ isOpen }) => (isOpen ? "350px" : "0")};
     transition: max-height 0.3s ease-in;
     width: 100%;
     position: relative;
@@ -40,28 +44,28 @@ export const NavigationLinksContainer = styled.div`
 `;
 
 export const NavigationLink = styled(Link)`
-  padding: 10px 15px;
+  margin: 0 2rem;
   cursor: pointer;
   color: black;
-  border-bottom: 2px solid white;
 
   &:hover {
-    border-bottom: 2px solid black;
-    transition: all 0.1s ease-in-out;
+    transform: scale(1.1);
+    font-weight: 500;
+    transition: transform 0.1s ease-in;
+  }
+  @media (max-width: 768px) {
+    margin: 1rem 0;
   }
 `;
 export const MenuContainer = styled.div`
   display: none;
   flex-direction: column;
   cursor: pointer;
-  span {
-    height: 2px;
-    width: 25px;
-    background: #7b7fda;
-    margin-bottom: 4px;
-    border-radius: 5px;
-  }
+
   @media (max-width: 768px) {
     display: flex;
   }
+`;
+export const UserStyled = styled(User)`
+  padding: 10px 15px;
 `;
