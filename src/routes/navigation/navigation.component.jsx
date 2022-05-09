@@ -18,36 +18,29 @@ import {
 import Auth from "../../routes/authentication/auth.component";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
-  const signOutHandler = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  };
+  const toggleMenu = () => setIsOpen((prev) => !prev);
   return (
     <>
       <NavigationContainer>
-        <LogoContainer to="/">
+        <LogoContainer onClick={toggleMenu} to="/">
           <CrwnLogo />
         </LogoContainer>
         <MenuContainer>
           {isOpen ? (
-            <CloseIcon
-              fontSize="large"
-              onClick={() => setIsOpen((prev) => !prev)}
-            />
+            <CloseIcon fontSize="large" onClick={toggleMenu} />
           ) : (
-            <MenuIcon
-              fontSize="large"
-              onClick={() => setIsOpen((prev) => !prev)}
-            />
+            <MenuIcon fontSize="large" onClick={toggleMenu} />
           )}
         </MenuContainer>
         <NavigationLinksContainer isOpen={isOpen}>
-          <NavigationLink to="/shop">Shop</NavigationLink>
+          <NavigationLink onClick={toggleMenu} to="/shop">
+            Shop
+          </NavigationLink>
           {currentUser ? (
             <>
-              <NavigationLink onClick={signOutHandler} to="/">
+              <NavigationLink onClick={signOutUser} to="/">
                 Sign Out
               </NavigationLink>
               <UserStyled

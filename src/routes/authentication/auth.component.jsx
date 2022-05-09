@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Modal, Button, Text, Row, Loading } from "@nextui-org/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import {
@@ -9,7 +9,6 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import SignUp from "../../components/sign-up-form/sign-up-form.component";
 import SignIn from "../../components/sign-in-form/sign-in-form.component";
-import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
   displayName: "",
@@ -25,7 +24,6 @@ const Auth = () => {
   const [isGoogleDisabeld, setGoogleDisabeld] = useState(false);
   const [userCredentials, setUserCredentials] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = userCredentials;
-  const { setCurrentUser } = useContext(UserContext);
 
   const closeHandler = () => setVisible(false);
 
@@ -40,14 +38,12 @@ const Auth = () => {
 
   const switchMode = () => {
     setIsSignUp((prev) => !prev);
-    console.log(isSignUp);
   };
 
   const signInWithGoogle = async () => {
     setGoogleDisabeld(true);
     try {
-      const { user } = await signInWithGooglePopUp();
-      await createUserDocumentFromAuth(user);
+      await signInWithGooglePopUp();
       closeHandler();
     } catch (error) {
       console.log(error);
@@ -69,14 +65,9 @@ const Auth = () => {
           email,
           password
         );
-        setCurrentUser(user);
         await createUserDocumentFromAuth(user, { displayName });
       } else {
-        const { user } = await signInAuthUserWithEmailAndPassword(
-          email,
-          password
-        );
-        setCurrentUser(user);
+        await signInAuthUserWithEmailAndPassword(email, password);
         closeHandler();
       }
     } catch (error) {
@@ -106,7 +97,8 @@ const Auth = () => {
           backgroundColor: "black",
         }}
         auto
-        onClick={showModal}>
+        onClick={showModal}
+      >
         Sign In
       </Button>
 
@@ -116,7 +108,8 @@ const Auth = () => {
         aria-labelledby="sign-in-modal"
         open={visible}
         onClose={closeHandler}
-        autoMargin>
+        autoMargin
+      >
         <form onSubmit={handleSubmit}>
           <Modal.Header>
             <Text id="modal-title" size={18}>
@@ -153,8 +146,9 @@ const Auth = () => {
                 type="submit"
                 auto
                 disabled={isDisabeld}
-                animated>
-                {isSignUp && isDisabeld ? (
+                animated
+              >
+                {isDisabeld ? (
                   <Loading color="currentColor" type="points" size="md" />
                 ) : isSignUp ? (
                   "Sign Up"
@@ -167,7 +161,8 @@ const Auth = () => {
                 icon={<GoogleIcon />}
                 flat
                 auto
-                onClick={signInWithGoogle}>
+                onClick={signInWithGoogle}
+              >
                 {isGoogleDisabeld ? (
                   <Loading color="primary" type="points" size="md" />
                 ) : (

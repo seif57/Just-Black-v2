@@ -14,7 +14,7 @@ export const NavigationContainer = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
 `;
@@ -44,15 +44,29 @@ export const NavigationLinksContainer = styled.div`
 `;
 
 export const NavigationLink = styled(Link)`
+  display: inline;
   margin: 0 1rem;
+  padding: 0.5rem;
   cursor: pointer;
   color: black;
-
-  &:hover {
-    text-decoration: underline;
+  font-size: 1.2rem;
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+  &::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width 0.3s;
+  }
+  &:hover::after {
+    width: 100%;
   }
   @media (max-width: 768px) {
     margin: 1rem 0;
+    padding: 0;
   }
 `;
 export const MenuContainer = styled.div`
