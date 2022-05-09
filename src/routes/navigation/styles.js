@@ -44,14 +44,12 @@ export const NavigationLinksContainer = styled.div`
 `;
 
 export const NavigationLink = styled(Link)`
-  margin: 0 2rem;
+  margin: 0 1rem;
   cursor: pointer;
   color: black;
 
   &:hover {
-    transform: scale(1.1);
-    font-weight: 500;
-    transition: transform 0.1s ease-in;
+    text-decoration: underline;
   }
   @media (max-width: 768px) {
     margin: 1rem 0;
@@ -68,4 +66,7 @@ export const MenuContainer = styled.div`
 `;
 export const UserStyled = styled(User)`
   padding: 10px 15px;
+`;
+export const AuthContainer = styled.div`
+  padding: 10px;
 `;
