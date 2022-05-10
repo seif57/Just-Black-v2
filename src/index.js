@@ -6,6 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import { NextUIProvider } from "@nextui-org/react";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./contexts/user.context";
+import { ToastContainer, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ProductsProvider } from "./contexts/products.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,10 +16,23 @@ root.render(
     <NextUIProvider>
       <BrowserRouter>
         <UserProvider>
-          <App />
+          <ProductsProvider>
+            <App />
+          </ProductsProvider>
         </UserProvider>
       </BrowserRouter>
     </NextUIProvider>
+    <ToastContainer
+      theme="dark"
+      position="bottom-right"
+      transition={Flip}
+      pauseOnHover={false}
+      autoClose={3000}
+      style={{
+        zIndex: 10000,
+      }}
+      hideProgressBar
+    />
   </React.StrictMode>
 );
 

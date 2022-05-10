@@ -8,7 +8,6 @@ const categories = [
     sm: 6,
     md: 6,
     lg: 4,
-    xl: 4,
     imageUrl: {
       src: "https://i.ibb.co/cvpntL1/hats.png",
       alt: "hats",
@@ -21,7 +20,6 @@ const categories = [
     sm: 6,
     md: 6,
     lg: 4,
-    xl: 4,
     imageUrl: {
       src: "https://i.ibb.co/px2tCc3/jackets.png",
       alt: "jackets",
@@ -33,7 +31,6 @@ const categories = [
     sm: 6,
     md: 12,
     lg: 4,
-    xl: 4,
     title: "sneakers",
     imageUrl: {
       src: "https://i.ibb.co/0jqHpnp/sneakers.png",
@@ -46,7 +43,6 @@ const categories = [
     sm: 6,
     md: 6,
     lg: 6,
-    xl: 6,
     title: "womens",
     imageUrl: {
       src: "https://i.ibb.co/GCCdy8t/womens.png",
@@ -59,7 +55,6 @@ const categories = [
     sm: 12,
     md: 6,
     lg: 6,
-    xl: 6,
     title: "mens",
     imageUrl: {
       src: "https://i.ibb.co/R70vBrQ/men.png",

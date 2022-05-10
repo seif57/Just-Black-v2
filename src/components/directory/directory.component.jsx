@@ -9,7 +9,8 @@ export const Directory = ({ categories }) => {
       }}
       justify="space-between"
       gap={2}
-      alignItems="center">
+      alignItems="center"
+    >
       {categories.map((category) => (
         <Grid
           key={category.id}
@@ -17,9 +18,9 @@ export const Directory = ({ categories }) => {
           sm={category.sm}
           md={category.md}
           lg={category.lg}
-          xl={category.xl}
           justify="center"
-          alignItems="center">
+          alignItems="center"
+        >
           <CategoryItem {...category} />
         </Grid>
       ))}

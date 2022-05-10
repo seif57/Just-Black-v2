@@ -9,6 +9,10 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import SignUp from "../../components/sign-up-form/sign-up-form.component";
 import SignIn from "../../components/sign-in-form/sign-in-form.component";
+import {
+  notifyError,
+  notifySuccess,
+} from "../../utils/notification/notification";
 
 const defaultFormFields = {
   displayName: "",
@@ -44,6 +48,7 @@ const Auth = () => {
     setGoogleDisabeld(true);
     try {
       await signInWithGooglePopUp();
+      notifySuccess("Signed in successfully");
       closeHandler();
     } catch (error) {
       console.log(error);
@@ -56,30 +61,33 @@ const Auth = () => {
     setDisabeld(true);
 
     try {
-      if (isSignUp) {
-        if (password !== confirmPassword) {
-          alert("passwords don't match");
-          return;
-        }
-        const { user } = await createAuthUserWithEmailAndPassword(
-          email,
-          password
-        );
-        await createUserDocumentFromAuth(user, { displayName });
-      } else {
+      if (!isSignUp) {
         await signInAuthUserWithEmailAndPassword(email, password);
-        closeHandler();
+        notifySuccess("Signed in successfully");
+        return;
       }
+      if (password !== confirmPassword) {
+        notifyError("passwords don't match");
+        return;
+      }
+      const { user } = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      await createUserDocumentFromAuth(user, { displayName });
+      notifySuccess("Signed up successfully");
+      closeHandler();
     } catch (error) {
       switch (error.code) {
-        case "auth/invalid-email":
-          alert("Invalid email");
+        case "auth/invalid-email" && "auth/wrong-password":
+          notifyError("Invalid email or password");
           break;
         case "auth/user-not-found":
-          alert("User not found");
+          notifyError("User not found");
           break;
-        case "auth/wrong-password":
-          alert("Wrong password");
+        case "auth/email-already-in-use":
+          notifyError("Email already in use");
           break;
         default:
           console.log(error);
@@ -95,6 +103,7 @@ const Auth = () => {
         css={{
           color: "white",
           backgroundColor: "black",
+          boxShadow: "$md",
         }}
         auto
         onClick={showModal}
@@ -104,11 +113,14 @@ const Auth = () => {
 
       <Modal
         closeButton
-        preventClose
         aria-labelledby="sign-in-modal"
         open={visible}
         onClose={closeHandler}
         autoMargin
+        blur
+        css={{
+          zIndex: "9997",
+        }}
       >
         <form onSubmit={handleSubmit}>
           <Modal.Header>
