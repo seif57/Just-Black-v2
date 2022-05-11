@@ -19,7 +19,7 @@ export const NavigationContainer = styled.div`
   }
 `;
 
-export const LogoContainer = styled(Link)`
+export const LogoContainer = styled.div`
   height: 100%;
   width: 70px;
   padding: 1rem 0;

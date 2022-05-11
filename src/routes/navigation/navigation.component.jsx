@@ -27,7 +27,9 @@ const Navigation = () => {
     <>
       <NavigationContainer>
         <LogoContainer onClick={() => setIsOpen(false)} to="/">
-          <CrwnLogo />
+          <Link to="/">
+            <CrwnLogo />
+          </Link>
         </LogoContainer>
         <CartIcon />
         <MenuContainer>
