@@ -10,7 +10,7 @@ export const NavigationContainer = styled.div`
   flex-wrap: wrap;
   background: white;
   position: sticky;
-  z-index: 1000;
+  z-index: 9999;
   top: 0;
   left: 0;
   right: 0;
@@ -25,6 +25,7 @@ export const LogoContainer = styled(Link)`
   padding: 1rem 0;
   font-weight: 800;
   font-size: 1.7rem;
+  flex: 1;
 `;
 
 export const NavigationLinksContainer = styled.div`

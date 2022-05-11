@@ -5,6 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
+import { Link } from "react-router-dom";
 
 import {
   NavigationContainer,
@@ -16,6 +17,7 @@ import {
   AuthContainer,
 } from "./styles";
 import Auth from "../../routes/authentication/auth.component";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { currentUser } = useContext(UserContext);
@@ -24,9 +26,10 @@ const Navigation = () => {
   return (
     <>
       <NavigationContainer>
-        <LogoContainer onClick={toggleMenu} to="/">
+        <LogoContainer onClick={() => setIsOpen(false)} to="/">
           <CrwnLogo />
         </LogoContainer>
+        <CartIcon />
         <MenuContainer>
           {isOpen ? (
             <CloseIcon fontSize="large" onClick={toggleMenu} />
@@ -34,6 +37,7 @@ const Navigation = () => {
             <MenuIcon fontSize="large" onClick={toggleMenu} />
           )}
         </MenuContainer>
+
         <NavigationLinksContainer isOpen={isOpen}>
           <NavigationLink onClick={toggleMenu} to="/shop">
             Shop
@@ -48,8 +52,8 @@ const Navigation = () => {
                 src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
                 name="Ariana Wattson"
                 pointer="true"
-                zoomed="true"
                 text="A"
+                size="lg"
               />
             </>
           ) : (

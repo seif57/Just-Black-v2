@@ -2,15 +2,16 @@ import { Button, Card, Row, Text, Tooltip } from "@nextui-org/react";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 const ProductCard = ({ product }) => {
+  const { name, price, imageUrl } = product;
   return (
     <Card hoverable clickable>
       <Card.Body css={{ p: 0 }}>
         <Card.Image
           objectFit="cover"
-          src={product.imageUrl}
+          src={imageUrl}
           width="100%"
           height={320}
-          alt={product.name}
+          alt={name}
         />
       </Card.Body>
       <Card.Footer
@@ -21,7 +22,7 @@ const ProductCard = ({ product }) => {
       >
         <Row align="center" wrap="wrap" justify="space-between">
           <Text color="white" b>
-            {product.name}
+            {name}
           </Text>
           <Tooltip color="invert" content="Add to cart" placement="bottomStart">
             <Button auto color="white" iconRight={<AddShoppingCartIcon />}>
@@ -31,7 +32,7 @@ const ProductCard = ({ product }) => {
                   fontWeight: "$semibold",
                 }}
               >
-                ${product.price}
+                ${price}
               </Text>
             </Button>
           </Tooltip>
