@@ -1,8 +1,15 @@
+import { useContext } from "react";
+
+import { CartContext } from "../../contexts/cart.context";
 import { Button, Card, Row, Text, Tooltip } from "@nextui-org/react";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
+  const { addItemToCart } = useContext(CartContext);
+
+  const addProductToCart = () => addItemToCart(product);
+
   return (
     <Card hoverable clickable>
       <Card.Body css={{ p: 0 }}>
@@ -24,8 +31,13 @@ const ProductCard = ({ product }) => {
           <Text color="white" b>
             {name}
           </Text>
-          <Tooltip color="invert" content="Add to cart" placement="bottomStart">
-            <Button auto color="white" iconRight={<AddShoppingCartIcon />}>
+          <Tooltip color="invert" content="Add to cart" placement="bottomEnd">
+            <Button
+              onClick={addProductToCart}
+              auto
+              color="white"
+              iconRight={<AddShoppingCartIcon />}
+            >
               <Text
                 css={{
                   color: "$accents6",

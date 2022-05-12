@@ -1,12 +1,20 @@
+import { useContext } from "react";
+
+import { CartContext } from "../../contexts/cart.context";
+
 import { Button } from "@mui/material";
-import React from "react";
+import CartItem from "../cart-item/cart-item.component";
 
 const CartDropdown = () => {
+  const { cartItems } = useContext(CartContext);
   return (
     <div>
       <div>
-        <Button>ChecK Out </Button>
+        {cartItems.map((cartItem) => (
+          <CartItem key={cartItem.id} cartItem={cartItem} />
+        ))}
       </div>
+      <Button>ChecK Out </Button>
     </div>
   );
 };

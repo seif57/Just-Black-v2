@@ -17,12 +17,16 @@ import {
   AuthContainer,
 } from "./styles";
 import Auth from "../../routes/authentication/auth.component";
-import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartIcon from "../../components/cart/cart.component";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { currentUser } = useContext(UserContext);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
+  const signOutUserHandler = () => {
+    signOutUser();
+    setIsOpen(false);
+  };
   return (
     <>
       <NavigationContainer>
@@ -46,7 +50,7 @@ const Navigation = () => {
           </NavigationLink>
           {currentUser ? (
             <>
-              <NavigationLink onClick={signOutUser} to="/">
+              <NavigationLink onClick={signOutUserHandler} to="/">
                 Sign Out
               </NavigationLink>
               <UserStyled

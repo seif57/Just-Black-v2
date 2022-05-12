@@ -5,10 +5,10 @@ import { CartContext } from "../../contexts/cart.context";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { CartIconContainer, ItemCount } from "./styles";
 
-const CartIcon = () => {
+const Cart = () => {
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
   return (
-    <Popover isOpen={isCartOpen} onOpenChange={setIsCartOpen}>
+    <Popover offset={-70} isOpen={isCartOpen} onOpenChange={setIsCartOpen}>
       <Popover.Trigger>
         <CartIconContainer as="button">
           <ShoppingCartOutlinedIcon sx={{ fontSize: 35 }} />
@@ -22,4 +22,4 @@ const CartIcon = () => {
   );
 };
 
-export default CartIcon;
+export default Cart;

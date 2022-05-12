@@ -4,8 +4,8 @@ export const Directory = ({ categories }) => {
   return (
     <Grid.Container
       css={{
-        width: "90%",
-        margin: "auto",
+        w: "90%",
+        m: "80px auto",
       }}
       justify="space-between"
       gap={2}

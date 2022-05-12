@@ -3,19 +3,21 @@ import { Link } from "react-router-dom";
 import { User } from "@nextui-org/react";
 
 export const NavigationContainer = styled.div`
-  padding: 0 2rem;
+  padding: 0 8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   background: white;
-  position: sticky;
-  z-index: 9999;
+  position: fixed;
+  z-index: 1000;
   top: 0;
   left: 0;
   right: 0;
+
   @media (max-width: 960px) {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 0 2rem;
   }
 `;
 
