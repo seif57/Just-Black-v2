@@ -31,7 +31,12 @@ const ProductCard = ({ product }) => {
           <Text color="white" b>
             {name}
           </Text>
-          <Tooltip color="invert" content="Add to cart" placement="bottomEnd">
+          <Tooltip
+            color="invert"
+            content="Add to cart"
+            placement="bottomStart"
+            offset={-70}
+          >
             <Button
               onClick={addProductToCart}
               auto
